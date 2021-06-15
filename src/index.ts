@@ -7,7 +7,7 @@ interface Color {
 const color: Color = {
     red: 20,
     blue: 20,
-    green: 12,
+    green: 22,
 };
 
 export default color;
