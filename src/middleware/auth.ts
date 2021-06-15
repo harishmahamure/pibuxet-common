@@ -28,7 +28,7 @@ export const authMiddleWare = (
     next: NextFunction,
 ) => {
     try {
-        console.log(req.headers.pibuxetAuthToken);
+        console.log(req.headers);
         const payload = jwt.verify(
             req.headers.pibuxetAuthToken!,
             process.env.JWT_KEY!,
