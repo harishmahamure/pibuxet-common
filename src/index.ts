@@ -10,6 +10,12 @@ const color: Color = {
     green: 22,
 };
 
-export default color;
+interface User {
+    name: string;
+}
 
-console.log(color);
+const user: User = {
+    name: "harish",
+};
+
+export default color;
