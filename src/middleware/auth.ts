@@ -18,7 +18,7 @@ declare global {
 
 declare module "http" {
     interface IncomingHttpHeaders {
-        pibuxetAuthToken?: string;
+        pibuxetauthtoken?: string;
     }
 }
 
@@ -28,9 +28,8 @@ export const authMiddleWare = (
     next: NextFunction,
 ) => {
     try {
-        console.log(req.headers);
         const payload = jwt.verify(
-            req.headers.pibuxetAuthToken!,
+            req.headers.pibuxetauthtoken!,
             process.env.JWT_KEY!,
         ) as UserPayload;
         req.currentUser = payload;
