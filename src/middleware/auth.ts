@@ -4,37 +4,24 @@ import { NotAuthorisedError } from "../errors";
 import { IncomingHttpHeaders } from "http";
 
 interface UserPayload {
-  id: string;
-  email: string;
-}
-
-declare global {
-  namespace Express {
-    interface Request {
-      currentUser?: UserPayload;
-    }
-  }
+  [key: string]: any;
 }
 
 declare module "http" {
   interface IncomingHttpHeaders {
-    pibuxetauthtoken?: string;
+    ["x-auth"]?: string;
   }
 }
 
-export const authMiddleWare = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const payload = jwt.verify(
-      req.headers.pibuxetauthtoken!,
-      process.env.JWT_KEY!
-    ) as UserPayload;
-    req.currentUser = payload;
-  } catch (error) {
-    throw new NotAuthorisedError();
-  }
-  next();
-};
+export const authMiddleWare =
+  (JWT_KEY: string) => (req: Request, res: Response, next: NextFunction) => {
+    if (JWT_KEY) {
+      throw new Error("JWT_KEY is not defined");
+    }
+    try {
+      jwt.verify(req.headers["x-auth"]!, JWT_KEY) as UserPayload;
+    } catch (error) {
+      throw new NotAuthorisedError();
+    }
+    next();
+  };
