@@ -1,6 +1,6 @@
 # @pibuxet-common
 
-Common methods, Custom Errors and common middlewares for the node backend.
+Custom Errors and common middlewares for the node backend.
 
 ## Installation
 
