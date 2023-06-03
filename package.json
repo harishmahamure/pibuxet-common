@@ -1,6 +1,6 @@
 {
     "name": "@pibuxet/common",
-    "version": "1.1.10",
+    "version": "2.0.0",
     "description": "",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
@@ -10,7 +10,7 @@
     "scripts": {
         "clean": "del-cli ./build/*",
         "build": "npm run clean && tsc",
-        "publish": "git add . && git commit -m \"Update\" && npm version patch &&npm run build && npm publish"
+        "publish": "git add . && git commit -m \"Update\" && npm version patch && npm run build && npm publish"
     },
     "keywords": [],
     "author": "",
