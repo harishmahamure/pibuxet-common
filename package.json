@@ -10,17 +10,24 @@
     "scripts": {
         "clean": "del-cli ./build/*",
         "build": "npm run clean && tsc",
-        "pub": "git add . && git commit -m \"Update\" && npm version patch &&npm run build && npm publish"
+        "publish": "git add . && git commit -m \"Update\" && npm version patch &&npm run build && npm publish"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "del-cli": "^3.0.1"
+        "@types/express": "^4.17.17",
+        "@types/jsonwebtoken": "^9.0.2",
+        "@typescript-eslint/eslint-plugin": "^5.50.0",
+        "del-cli": "^3.0.1",
+        "eslint": "^8.0.1",
+        "eslint-config-standard-with-typescript": "^35.0.0",
+        "eslint-plugin-import": "^2.25.2",
+        "eslint-plugin-n": "^15.0.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "typescript": "*"
     },
     "dependencies": {
-        "@types/express": "^4.17.12",
-        "@types/jsonwebtoken": "^8.5.1",
         "express": "^4.17.1",
         "express-validator": "^6.12.0",
         "jsonwebtoken": "^8.5.1"
