@@ -1,7 +1,7 @@
 {
     "name": "@pibuxet/common",
     "version": "2.0.6",
-    "description": "",
+    "description": "The @pibuxet-common package provides custom error handling capabilities through a set of predefined error classes. These custom errors are designed to enhance error handling and provide meaningful information to developers and users.",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
     "files": [
