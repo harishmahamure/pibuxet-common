@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { NotAuthorisedError } from "../errors";
-import { IncomingHttpHeaders } from "http";
 
 interface UserPayload {
   [key: string]: any;
@@ -9,17 +8,18 @@ interface UserPayload {
 
 declare module "http" {
   interface IncomingHttpHeaders {
-    ["x-auth"]?: string;
+    string?: string;
   }
 }
 
 export const authMiddleWare =
-  (JWT_KEY: string) => (req: Request, res: Response, next: NextFunction) => {
+  (JWT_KEY: string, headerKey: string) =>
+  (req: Request, res: Response, next: NextFunction) => {
     if (JWT_KEY) {
       throw new Error("JWT_KEY is not defined");
     }
     try {
-      jwt.verify(req.headers["x-auth"]!, JWT_KEY) as UserPayload;
+      jwt.verify(req.headers[headerKey]! as string, JWT_KEY) as UserPayload;
     } catch (error) {
       throw new NotAuthorisedError();
     }
